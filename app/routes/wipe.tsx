@@ -1,60 +1,81 @@
+import { useAuth } from "@clerk/react-router";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { usePuterStore } from "~/lib/puter";
+import { deleteResume, getAllResumes } from "~/lib/resume-db";
 
 const WipeApp = () => {
-    const { auth, isLoading, error, clearError, fs, ai, kv } = usePuterStore();
+    const { isLoaded, isSignedIn } = useAuth();
     const navigate = useNavigate();
-    const [files, setFiles] = useState<FSItem[]>([]);
+    const [resumeCount, setResumeCount] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [error, setError] = useState("");
 
-    const loadFiles = async () => {
-        const files = (await fs.readDir("./")) as FSItem[];
-        setFiles(files);
+    const loadResumes = async () => {
+        try {
+            const resumes = await getAllResumes();
+            setResumeCount(resumes.length);
+        } catch (error) {
+            console.error("Failed to load resumes:", error);
+            setError("Failed to load resume data.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     useEffect(() => {
-        loadFiles();
-    }, []);
+        if (!isLoaded) return;
 
-    useEffect(() => {
-        if (!isLoading && !auth.isAuthenticated) {
-            navigate("/auth?next=/wipe");
+        if (!isSignedIn) {
+            navigate("/auth?next=/wipe", { replace: true });
+            return;
         }
-    }, [isLoading]);
+
+        loadResumes();
+    }, [isLoaded, isSignedIn, navigate]);
 
     const handleDelete = async () => {
-        files.forEach(async (file) => {
-            await fs.delete(file.path);
-        });
-        await kv.flush();
-        loadFiles();
+        try {
+            setIsDeleting(true);
+            setError("");
+
+            const resumes = await getAllResumes();
+
+            await Promise.all(
+                resumes.map((resume) => deleteResume(resume.id)),
+            );
+
+            await loadResumes();
+        } catch (error) {
+            console.error("Failed to wipe resume data:", error);
+            setError("Failed to delete resume data.");
+        } finally {
+            setIsDeleting(false);
+        }
     };
 
-    if (isLoading) {
+    if (!isLoaded || isLoading) {
         return <div>Loading...</div>;
     }
 
-    if (error) {
-        return <div>Error {error}</div>;
+    if (!isSignedIn) {
+        return null;
     }
 
     return (
         <div>
-            Authenticated as: {auth.user?.username}
-            <div>Existing files:</div>
-            <div className="flex flex-col gap-4">
-                {files.map((file) => (
-                    <div key={file.id} className="flex flex-row gap-4">
-                        <p>{file.name}</p>
-                    </div>
-                ))}
-            </div>
+            Authenticated with Clerk
+            <div>Existing resumes: {resumeCount}</div>
+
+            {error && <div>Error: {error}</div>}
+
             <div>
                 <button
                     className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer"
-                    onClick={() => handleDelete()}
+                    onClick={handleDelete}
+                    disabled={isDeleting}
                 >
-                    Wipe App Data
+                    {isDeleting ? "Wiping..." : "Wipe App Data"}
                 </button>
             </div>
         </div>

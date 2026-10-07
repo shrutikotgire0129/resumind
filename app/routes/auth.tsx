@@ -1,21 +1,31 @@
-import {usePuterStore} from "~/lib/puter";
-import {useEffect} from "react";
-import {useLocation, useNavigate} from "react-router";
+import { useClerk, useAuth } from "@clerk/react-router";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router";
 
 export const meta = () => ([
-    { title: 'Resumind | Auth' },
-    { name: 'description', content: 'Log into your account' },
-])
+    { title: "Resumind | Auth" },
+    { name: "description", content: "Log into your account" },
+]);
 
 const Auth = () => {
-    const { isLoading, auth } = usePuterStore();
+    const { isLoaded, isSignedIn } = useAuth();
+    const { openSignIn } = useClerk();
     const location = useLocation();
-    const next = location.search.split('next=')[1];
     const navigate = useNavigate();
 
+    const next = new URLSearchParams(location.search).get("next") || "/";
+
     useEffect(() => {
-        if(auth.isAuthenticated) navigate(next);
-    }, [auth.isAuthenticated, next])
+        if (isLoaded && isSignedIn) {
+            navigate(next, { replace: true });
+        }
+    }, [isLoaded, isSignedIn, navigate, next]);
+
+    const handleSignIn = () => {
+        openSignIn({
+            forceRedirectUrl: next,
+        });
+    };
 
     return (
         <main className="bg-[url('/images/bg-auth.svg')] bg-cover min-h-screen flex items-center justify-center">
@@ -25,29 +35,35 @@ const Auth = () => {
                         <h1>Welcome</h1>
                         <h2>Log In to Continue Your Job Journey</h2>
                     </div>
+
                     <div>
-                        {isLoading ? (
-                            <button className="auth-button animate-pulse">
-                                <p>Signing you in...</p>
+                        {!isLoaded ? (
+                            <button
+                                className="auth-button animate-pulse"
+                                disabled
+                            >
+                                <p>Loading...</p>
+                            </button>
+                        ) : isSignedIn ? (
+                            <button
+                                className="auth-button"
+                                onClick={() => navigate(next, { replace: true })}
+                            >
+                                <p>Continue</p>
                             </button>
                         ) : (
-                            <>
-                                {auth.isAuthenticated ? (
-                                    <button className="auth-button" onClick={auth.signOut}>
-                                        <p>Log Out</p>
-                                    </button>
-                                ) : (
-                                    <button className="auth-button" onClick={auth.signIn}>
-                                        <p>Log In</p>
-                                    </button>
-                                )}
-                            </>
+                            <button
+                                className="auth-button"
+                                onClick={handleSignIn}
+                            >
+                                <p>Log In</p>
+                            </button>
                         )}
                     </div>
                 </section>
             </div>
         </main>
-    )
-}
+    );
+};
 
-export default Auth
+export default Auth;

@@ -6,11 +6,21 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-
+import {
+  clerkMiddleware,
+  rootAuthLoader,
+} from "@clerk/react-router/server";
 import type { Route } from "./+types/root";
 import "./app.css";
-import {usePuterStore} from "~/lib/puter";
-import {useEffect} from "react";
+import { ClerkProvider } from "@clerk/react-router";
+
+
+export const middleware: Route.MiddlewareFunction[] = [
+  clerkMiddleware(),
+];
+
+export const loader = (args: Route.LoaderArgs) =>
+  rootAuthLoader(args);
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -26,22 +36,18 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { init } = usePuterStore();
-
-  useEffect(() => {
-    init()
-  }, [init]);
-
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        />
         <Meta />
         <Links />
       </head>
       <body>
-        <script src="https://js.puter.com/v2/"></script>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -50,11 +56,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
-  return <Outlet />;
+export default function App({
+  loaderData,
+}: Route.ComponentProps) {
+  return (
+    <ClerkProvider loaderData={loaderData}>
+      <Outlet />
+    </ClerkProvider>
+  );
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+export function ErrorBoundary({
+  error,
+}: Route.ErrorBoundaryProps) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
@@ -65,7 +79,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       error.status === 404
         ? "The requested page could not be found."
         : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
+  } else if (
+    import.meta.env.DEV &&
+    error &&
+    error instanceof Error
+  ) {
     details = error.message;
     stack = error.stack;
   }
