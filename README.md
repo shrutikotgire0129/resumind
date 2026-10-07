@@ -1,116 +1,568 @@
+# Resumind
+
 <div align="center">
-  <br />
-    <a href="https://www.youtube.com/watch?v=iYOz165wGkQ" target="_blank">
-      <img src="public/readme/hero.webp" alt="Project Banner">
-    </a>
-  <br />
 
-  <div>
-    <img alt="Static Badge" src="https://img.shields.io/badge/React-4c84f3?style=for-the-badge&logo=react&logoColor=white">
-        <img src="https://img.shields.io/badge/-Tailwind-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-        <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="TypeScript" />
-    <img alt="Static Badge" src="https://img.shields.io/badge/Puter.js-181758?style=for-the-badge&logoColor=white">
-  </div>
+### AI-Powered Career Optimization Platform
 
-  <h3 align="center">AI Resume Analyzer</h3>
+Analyze your resume, match it against jobs, improve it with AI, manage applications, and track your career progress — all in one place.
 
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/watch?v=XUkNR-JfHwo" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
+<br />
+
+<a href="https://resumind-cyan-seven.vercel.app/">
+  <img src="https://img.shields.io/badge/Live%20Demo-Resumind-6247AA?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+</a>
+&nbsp;
+<a href="https://github.com/shrutikotgire0129/resumind">
+  <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" />
+</a>
+
 </div>
 
-## 📋 <a name="table">Table of Contents</a>
+---
 
-1. ✨ [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🔗 [Assets](#links)
-6. 🚀 [More](#more)
+## Overview
 
-## 🚨 Tutorial
+**Resumind** is an AI-powered career optimization platform designed to help job seekers improve their resumes, evaluate their fit for specific roles, manage job applications, and understand their career-search performance.
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
+Instead of providing only a resume score, Resumind brings multiple stages of the job-search workflow into one application:
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
+**Analyze → Match → Improve → Apply → Track → Measure**
 
-<a href="https://www.youtube.com/watch?v=iYOz165wGkQ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
+The platform uses AI to analyze resume content, evaluate ATS compatibility, compare resumes against job descriptions, identify skill and keyword gaps, and provide actionable improvement suggestions.
 
-## <a name="introduction">✨ Introduction</a>
+---
 
-Build an AI-powered Resume Analyzer with React, React Router, and Puter.js! Implement seamless auth, upload and store resumes, and match candidates to jobs using smart AI evaluations. Get custom feedback and ATS scores tailored to each listing—all wrapped in a clean, reusable UI.
+## Live Demo
 
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
+<div align="center">
 
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+### [Visit Resumind →](https://resumind-cyan-seven.vercel.app/)
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+</div>
 
-- **[React](https://react.dev/)** is a popular open‑source JavaScript library for building user interfaces using reusable components and a virtual DOM, enabling efficient, dynamic single-page and native apps.
+---
 
-- **[React Router v7](https://reactrouter.com/)** is the go‑to routing library for React apps, offering nested routes, data loaders/actions, error boundaries, code splitting, and SSR support—all with a smooth upgrade path from v6.
+## Key Features
 
-- **[Puter.com](https://jsm.dev/resumind-puter)** is an advanced, open-source internet operating system designed to be feature-rich, exceptionally fast, and highly extensible. Puter can be used as: A privacy-first personal cloud to keep all your files, apps, and games in one secure place, accessible from anywhere at any time.
+### Resume Analysis
 
-- **[Puter.js](https://jsm.dev/resumind-puterjs)** is a tiny client‑side SDK that adds serverless auth, storage, database, and AI (GPT, Claude, DALL·E, OCR…) straight into your browser app—no backend needed and costs borne by users.
+Upload a resume and receive an AI-powered evaluation covering:
 
-- **[Tailwind CSS](https://tailwindcss.com/)** is a utility-first CSS framework that allows developers to design custom user interfaces by applying low-level utility classes directly in HTML, streamlining the design process.
+* Overall resume score
+* ATS compatibility
+* Tone and style
+* Resume content
+* Structure
+* Skills
+* Actionable improvement suggestions
 
-- **[TypeScript](https://www.typescriptlang.org/)** is a superset of JavaScript that adds static typing, providing better tooling, code quality, and error detection for developers, making it ideal for building large-scale applications.
+---
 
-- **[Vite](https://vite.dev/)** is a fast build tool and dev server using native ES modules for instant startup, hot‑module replacement, and Rollup‑powered production builds—perfect for modern web development.
+### Resume Versioning
 
-- **[Zustand](https://github.com/pmndrs/zustand)** is a minimal, hook-based state management library for React. It lets you manage global state with zero boilerplate, no context providers, and excellent performance through selective state subscriptions.
+Maintain multiple versions of a resume for different roles.
 
-## <a name="features">🔋 Features</a>
+* Create new resume versions
+* Track version numbers
+* Associate versions with specific job applications
+* Analyze how different resume versions perform
+* Preserve version-specific job matching history
 
-👉 **Easy & convenient auth**: Handle authentication entirely in the browser using Puter.js—no backend or setup required.
+This makes it possible to tailor resumes for different companies without losing previous versions.
 
-👉 **Resume upload & storage**: Let users upload and store all their resumes in one place, safely and reliably.
+---
 
-👉 **AI resume matching**: Provide a job listing and get an ATS score with custom feedback tailored to each resume.
+### Job Description Analyzer
 
-👉 **Reusable, modern UI**: Built with clean, consistent components for a great-looking and maintainable interface.
+Compare a resume against a target job description using AI.
 
-👉 **Code Reusability**: Leverage reusable components and a modular codebase for efficient development.
+The analyzer identifies:
 
-👉 **Cross-Device Compatibility**: Fully responsive design that works seamlessly across all devices.
+* Overall job match score
+* Matching skills
+* Missing skills
+* Matching keywords
+* Missing keywords
+* Experience compatibility
+* ATS compatibility
+* Actionable recommendations
 
-👉 **Modern UI/UX**: Clean, responsive design built with Tailwind CSS and shadcn/ui for a sleek user experience.
+Each analysis is stored with the resume version that was used.
 
-And many more, including code architecture and reusability.
+---
 
-## <a name="quick-start">🤸 Quick Start</a>
+### AI Resume Improvement Assistant
 
-Follow these steps to set up the project locally on your machine.
+Improve individual resume sections using AI.
 
-**Prerequisites**
+Supported sections include:
 
-Make sure you have the following installed on your machine:
+* Professional Summary
+* Experience
+* Projects
+* Skills
+* Education
+* Custom sections
 
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
+The assistant can:
 
-**Cloning the Repository**
+* Extract the selected section directly from the uploaded resume
+* Improve the content using AI
+* Optimize wording for ATS compatibility
+* Preserve the candidate's original facts
+* Explain why the revised version is stronger
+* Show the changes made
+* Copy the improved content
 
-```bash
-git clone https://github.com/adrianhajdin/ai-resume-analyzer.git
-cd ai-resume-analyzer
+The goal is not to invent experience, but to improve how existing experience is communicated.
+
+---
+
+### Job Application Tracker
+
+Manage the complete job-search pipeline from one dashboard.
+
+Supported application statuses:
+
+* Wishlist
+* Applied
+* OA / Assessment
+* Interview
+* Offer
+* Rejected
+
+Applications can include:
+
+* Company
+* Job title
+* Applied date
+* Job URL
+* Resume version used
+* Notes
+* Recruiter name
+* Recruiter email
+* Recruiter LinkedIn
+* Follow-up date
+* Priority
+* Job type
+* Tags
+* Interview details
+* Status history
+
+Additional functionality includes:
+
+* Search
+* Filtering
+* Sorting
+* Pagination
+* Edit and delete
+* CSV export
+* Follow-up status indicators
+* Application status timeline
+
+---
+
+### Resume Analytics
+
+Understand resume and job-search performance through visual analytics.
+
+#### ATS Score History
+
+Track ATS scores across resume versions.
+
+#### Keyword Coverage
+
+Measure how effectively resume versions match keywords identified from analyzed job descriptions.
+
+#### Skill Coverage
+
+Compare matching and missing skills across job analyses.
+
+#### Job-Specific Scores
+
+Review historical match scores for individual job opportunities and resume versions.
+
+---
+
+### Application Insights
+
+The application tracker also provides high-level job-search metrics including:
+
+* Active applications
+* Interview rate
+* Offer rate
+* Rejection rate
+* Application status distribution
+
+This provides a quick overview of the current job-search pipeline.
+
+---
+
+## Screenshots
+
+### Dashboard
+
+![Resumind Dashboard](screenshots/Resumind%20Dashboard.png)
+
+### Resume Upload
+
+![Resume Upload](screenshots/Upload.png)
+
+### Job Analyzer
+
+![Job Analyzer](screenshots/Job%20Analyzer.png)
+
+### Job Application Tracker
+
+![Job Application Tracker](screenshots/Job%20Application%20Tracker.png)
+
+### Resume Analytics
+
+![Resume Analytics](screenshots/Analytics.png)
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* **React 19**
+* **TypeScript**
+* **React Router**
+* **Vite**
+* **Tailwind CSS**
+* **shadcn/ui**
+* **Lucide React**
+* **Recharts**
+
+### Authentication
+
+* **Clerk**
+
+### AI
+
+* **Google Gemini API**
+
+Gemini is used for:
+
+* Resume analysis
+* Job matching
+* Resume section extraction
+* AI-powered resume improvement
+
+### File Storage
+
+* **Cloudinary**
+
+Used for resume PDF and image storage.
+
+### Client-Side Data
+
+* **IndexedDB**
+
+Used for persistent local storage of:
+
+* Resumes
+* Resume versions
+* Job match history
+* Job applications
+* Application status history
+
+### Development
+
+* **Git**
+* **GitHub**
+* **ESLint**
+* **TypeScript**
+* **npm**
+
+---
+
+## Architecture
+
+Resumind follows a modular React Router application structure with dedicated routes for the major career workflows.
+
+```text
+Resumind
+│
+├── Authentication
+│   └── Clerk
+│
+├── Resume Management
+│   ├── Upload
+│   ├── AI Analysis
+│   ├── Resume Versions
+│   └── Resume Details
+│
+├── Job Intelligence
+│   ├── Job Description Analyzer
+│   ├── Skill Matching
+│   ├── Keyword Matching
+│   └── ATS Compatibility
+│
+├── AI Resume Assistant
+│   ├── Section Extraction
+│   ├── AI Improvement
+│   ├── Improvement Explanation
+│   └── Change Detection
+│
+├── Application Management
+│   ├── Applications
+│   ├── Status Tracking
+│   ├── Recruiter Details
+│   ├── Follow-ups
+│   ├── Priorities
+│   ├── Tags
+│   └── CSV Export
+│
+└── Analytics
+    ├── ATS Score History
+    ├── Keyword Coverage
+    ├── Skill Coverage
+    └── Job-Specific Scores
 ```
 
-**Installation**
+---
 
-Install the project dependencies using npm:
+## Data Flow
+
+A typical resume optimization workflow looks like this:
+
+```text
+                ┌─────────────────┐
+                │   Upload Resume │
+                └────────┬────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │ Cloudinary      │
+                │ PDF Storage     │
+                └────────┬────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │ Gemini AI       │
+                │ Resume Analysis │
+                └────────┬────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │ Resume Version  │
+                └────────┬────────┘
+                         │
+             ┌───────────┴───────────┐
+             ▼                       ▼
+   ┌─────────────────┐     ┌─────────────────┐
+   │ Job Description │     │ AI Improvement  │
+   │ Analyzer        │     │ Assistant       │
+   └────────┬────────┘     └────────┬────────┘
+            │                       │
+            └───────────┬───────────┘
+                        ▼
+               ┌──────────────────┐
+               │ Application      │
+               │ Tracker          │
+               └────────┬─────────┘
+                        │
+                        ▼
+               ┌──────────────────┐
+               │ Career Analytics │
+               └──────────────────┘
+```
+
+---
+
+## Project Structure
+
+```text
+resumind/
+├── app/
+│   ├── components/
+│   │   ├── ui/
+│   │   ├── Navbar.tsx
+│   │   ├── ResumeCard.tsx
+│   │   └── ResumeImprovement.tsx
+│   │
+│   ├── lib/
+│   │   ├── cloudinary.ts
+│   │   ├── resume-db.ts
+│   │   └── utils.ts
+│   │
+│   ├── routes/
+│   │   ├── api.job-match.ts
+│   │   ├── api.resume-analysis.ts
+│   │   ├── api.resume-extract.ts
+│   │   ├── api.resume-improve.ts
+│   │   ├── analytics.tsx
+│   │   ├── applications.tsx
+│   │   ├── auth.tsx
+│   │   ├── home.tsx
+│   │   ├── job-analyzer.tsx
+│   │   ├── resume.tsx
+│   │   ├── upload.tsx
+│   │   └── wipe.tsx
+│   │
+│   ├── root.tsx
+│   └── routes.ts
+│
+├── constants/
+├── public/
+├── types/
+├── screenshots/
+├── components.json
+├── package.json
+├── react-router.config.ts
+├── vite.config.ts
+└── README.md
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have installed:
+
+* Node.js
+* npm
+* Git
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/shrutikotgire0129/resumind.git
+cd resumind
+```
+
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-**Running the Project**
+### Environment Variables
+
+Create a `.env` file in the project root and configure the required services:
+
+```env
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+
+VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+VITE_CLOUDINARY_UPLOAD_PRESET=your_cloudinary_upload_preset
+
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+Never commit real API keys or secret credentials to GitHub.
+
+### Run the Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
+Open the local development URL shown by Vite in your browser.
+
+### Type Check
+
+```bash
+npm run typecheck
+```
+
+### Production Build
+
+```bash
+npm run build
+```
+
+---
+
+## Resume Data & Privacy
+
+Resume files are stored using Cloudinary, while application and resume metadata is persisted locally through IndexedDB.
+
+Because application data is currently stored client-side, data is tied to the browser/device where the application is being used rather than being synchronized across multiple devices.
+
+API keys and server-side credentials should always remain in environment variables and should not be committed to the repository.
+
+---
+
+## Why Resumind?
+
+Most resume tools focus on a single score.
+
+Resumind takes a broader approach by connecting the complete job-search workflow:
+
+```text
+Resume Analysis
+      ↓
+Job Matching
+      ↓
+Resume Improvement
+      ↓
+Resume Versioning
+      ↓
+Job Applications
+      ↓
+Application Tracking
+      ↓
+Career Analytics
+```
+
+This makes Resumind useful not only for understanding a resume, but also for continuously improving and managing the job-search process.
+
+---
+
+## Engineering Highlights
+
+Resumind demonstrates practical implementation of:
+
+* AI-powered document analysis
+* Structured AI responses
+* PDF processing
+* Cloud file storage
+* Authentication and protected routes
+* Client-side persistent storage
+* Resume version management
+* Job-to-resume matching
+* AI-assisted content transformation
+* CRUD application architecture
+* Search, filtering, sorting, and pagination
+* Data visualization
+* Historical analytics
+* Form validation
+* Responsive UI
+* Type-safe React development
+* Modular route architecture
+
+---
+
+## Future Direction
+
+Potential areas for future evolution include:
+
+* Cloud-backed multi-device synchronization
+* Automated testing
+* CI/CD workflows
+* Advanced resume comparison
+* More detailed career analytics
+* Additional job-search automation
+
+---
+
+## Author
+
+### Shruti Hiraman Kotgire
+
+Software Engineer / SDE Candidate
+
+[![GitHub](https://img.shields.io/badge/GitHub-shrutikotgire0129-181717?style=flat\&logo=github)](https://github.com/shrutikotgire0129)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Shruti%20Kotgire-0A66C2?style=flat\&logo=linkedin)](https://www.linkedin.com/in/shrutikotgire129)
+
+---
+
+## License
+
+This project is intended for portfolio and educational purposes.
